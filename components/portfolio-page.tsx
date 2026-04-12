@@ -40,8 +40,8 @@ const externalLinkProps = {
   rel: "noreferrer",
 } as const;
 
-const contactEmailHref = "mailto:numaanbinhusain@gmail.com";
-const contactMeHref = `${contactEmailHref}?subject=Portfolio%20Inquiry`;
+const composeEmailHref =
+  "mailto:numaanbinhusain@gmail.com?subject=Portfolio%20Inquiry";
 
 const navLinks = [
   { label: "Projects", href: "#projects" },
@@ -668,7 +668,7 @@ export function PortfolioPage() {
             startup-ready web builds.
           </p>
           <div className="hero-actions">
-            <a className="button-primary" href={contactMeHref}>
+            <a className="button-primary" href={composeEmailHref}>
               Contact Me
             </a>
             <a
@@ -700,7 +700,7 @@ export function PortfolioPage() {
           >
             LinkedIn
           </a>
-          <a href={contactEmailHref}>Email</a>
+          <a href={composeEmailHref}>Email</a>
         </div>
         <span className="footer-signature">
           Built with intent, motion, and late-night obsession.
