@@ -67,7 +67,7 @@ const bentoCards: ProjectCard[] = [
     className: "bento-quote",
   },
   {
-    title: "Pure Plan",
+    title: "Life Planner",
     eyebrow: "Productivity system",
     description:
       "A planner interface focused on clarity, structured action, and quiet motivation instead of clutter.",
@@ -136,7 +136,7 @@ const railPanels = [
     href: "#synq-story",
   },
   {
-    title: "Pure Plan",
+    title: "Life Planner",
     description:
       "A planner dashboard that favors mental clarity, strong information hierarchy, and a calm daily workflow.",
     tags: ["Dashboard", "Planning", "Systems"],
@@ -301,14 +301,27 @@ export function PortfolioPage() {
         <div className="hero-glow" aria-hidden="true" />
         <div className="section-frame hero-frame">
           <Reveal className="eyebrow-pill" delay={80}>
-            Student Engineer / Building cinematic web products
+            Student Engineer / AI/ML Student
           </Reveal>
           <div className="hero-copy">
             <h1
               className="hero-title"
-              aria-label="I build digital products that feel ahead of their time."
+              aria-label="I design and ship product-focused web apps that feel fast, intentional, and built for real users."
             >
-              {["I", "build", "digital", "products", "that", "feel"].map(
+              {[
+                "I",
+                "design",
+                "and",
+                "ship",
+                "product-focused",
+                "web",
+                "apps",
+                "that",
+                "feel",
+                "fast,",
+                "intentional,",
+                "and",
+              ].map(
                 (word, index) => (
                   <span
                     key={word}
@@ -319,7 +332,7 @@ export function PortfolioPage() {
                   </span>
                 ),
               )}
-              <span className="hero-gradient">ahead of their time.</span>
+              <span className="hero-gradient">built for real users.</span>
             </h1>
             <Reveal as="p" className="hero-subtext" delay={280}>
               From secure messaging to immersive interfaces, I design and ship
