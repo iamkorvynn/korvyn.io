@@ -35,6 +35,9 @@ type RailPanel = {
   mobileAlt?: string;
 };
 
+const getLinkProps = (href: string) =>
+  href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {};
+
 const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
@@ -68,7 +71,7 @@ const bentoCards: ProjectCard[] = [
     description:
       "A cinematic messaging concept built around trust, device confidence, and visual restraint.",
     tags: ["E2EE", "Passkeys", "PWA", "Cinematic UI"],
-    href: "#synq-story",
+    href: "https://synq-chat.vercel.app/",
     className: "bento-feature",
   },
   {
@@ -83,6 +86,7 @@ const bentoCards: ProjectCard[] = [
     eyebrow: "Productivity system",
     description:
       "A planner interface focused on clarity, structured action, and quiet motivation instead of clutter.",
+    href: "https://life-planner-main.vercel.app/",
     className: "bento-small",
   },
   {
@@ -145,7 +149,7 @@ const railPanels: RailPanel[] = [
     description:
       "A messaging concept where privacy, modern auth, and cinematic pacing come together in one flagship product story.",
     tags: ["Messaging", "Security", "Product Design"],
-    href: "#synq-story",
+    href: "https://synq-chat.vercel.app/",
     desktopSrc: "/projects/synq-desktop.png",
     desktopAlt: "Synq desktop messaging workspace preview.",
     mobileSrc: "/projects/synq-mobile.jpeg",
@@ -156,7 +160,7 @@ const railPanels: RailPanel[] = [
     description:
       "A planner dashboard that favors mental clarity, strong information hierarchy, and a calm daily workflow.",
     tags: ["Dashboard", "Planning", "Systems"],
-    href: "#projects",
+    href: "https://life-planner-main.vercel.app/",
     desktopSrc: "/projects/life-planner-desktop.png",
     desktopAlt: "Life Planner desktop dashboard preview.",
     mobileSrc: "/projects/life-planner-mobile.jpeg",
@@ -413,7 +417,7 @@ export function PortfolioPage() {
                 </div>
               ) : null}
               {card.href ? (
-                <Link className="card-link" href={card.href}>
+                <Link className="card-link" href={card.href} {...getLinkProps(card.href)}>
                   View case study
                 </Link>
               ) : null}
@@ -579,7 +583,7 @@ export function PortfolioPage() {
                         <span key={tag}>{tag}</span>
                       ))}
                     </div>
-                    <Link className="card-link" href={panel.href}>
+                    <Link className="card-link" href={panel.href} {...getLinkProps(panel.href)}>
                       Explore project
                     </Link>
                   </div>
@@ -619,7 +623,7 @@ export function PortfolioPage() {
             </p>
           </Reveal>
           <Reveal className="about-list" delay={220}>
-            <span>Currently building: secure communication experiences</span>
+            <span>Currently building: secure, product-driven web applications.</span>
             <span>
               Interested in: product engineering, frontend systems, startup
               design
@@ -661,12 +665,12 @@ export function PortfolioPage() {
             startup-ready web builds.
           </p>
           <div className="hero-actions">
-            <Link className="button-primary" href="mailto:hello@korvyn.io">
+            <Link className="button-primary" href="mailto:numaanbinhusain@gmail.com">
               Contact Me
             </Link>
             <Link
               className="button-secondary"
-              href="https://github.com/korvynn"
+              href="https://github.com/iamkorvynn"
               target="_blank"
               rel="noreferrer"
             >
@@ -685,13 +689,17 @@ export function PortfolioPage() {
           <p>Product-minded frontend builder for privacy-first digital experiences.</p>
         </div>
         <div className="footer-links">
-          <Link href="https://github.com/korvynn" target="_blank" rel="noreferrer">
+          <Link href="https://github.com/iamkorvynn" target="_blank" rel="noreferrer">
             GitHub
           </Link>
-          <Link href="https://linkedin.com" target="_blank" rel="noreferrer">
+          <Link
+            href="https://www.linkedin.com/in/numaan-bin-husain/"
+            target="_blank"
+            rel="noreferrer"
+          >
             LinkedIn
           </Link>
-          <Link href="mailto:hello@korvyn.io">Email</Link>
+          <Link href="mailto:numaanbinhusain@gmail.com">Email</Link>
         </div>
         <span className="footer-signature">
           Built with intent, motion, and late-night obsession.
