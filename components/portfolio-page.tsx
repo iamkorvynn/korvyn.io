@@ -71,7 +71,7 @@ const bentoCards: ProjectCard[] = [
     description:
       "A cinematic messaging concept built around trust, device confidence, and visual restraint.",
     tags: ["E2EE", "Passkeys", "PWA", "Cinematic UI"],
-    href: "https://synq-chat.vercel.app/",
+    href: "#synq-story",
     className: "bento-feature",
   },
   {
@@ -86,7 +86,6 @@ const bentoCards: ProjectCard[] = [
     eyebrow: "Productivity system",
     description:
       "A planner interface focused on clarity, structured action, and quiet motivation instead of clutter.",
-    href: "https://life-planner-main.vercel.app/",
     className: "bento-small",
   },
   {
