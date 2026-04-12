@@ -20,7 +20,7 @@ type ProjectCard = {
   eyebrow: string;
   description: string;
   tags?: string[];
-  href?: string;
+  caseStudyHref?: string;
   className: string;
 };
 
@@ -28,15 +28,20 @@ type RailPanel = {
   title: string;
   description: string;
   tags: string[];
-  href: string;
+  liveHref?: string;
   desktopSrc?: string;
   desktopAlt?: string;
   mobileSrc?: string;
   mobileAlt?: string;
 };
 
-const getLinkProps = (href: string) =>
-  href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {};
+const externalLinkProps = {
+  target: "_blank",
+  rel: "noreferrer",
+} as const;
+
+const contactEmailHref = "mailto:numaanbinhusain@gmail.com";
+const contactMeHref = `${contactEmailHref}?subject=Portfolio%20Inquiry`;
 
 const navLinks = [
   { label: "Projects", href: "#projects" },
@@ -71,7 +76,7 @@ const bentoCards: ProjectCard[] = [
     description:
       "A cinematic messaging concept built around trust, device confidence, and visual restraint.",
     tags: ["E2EE", "Passkeys", "PWA", "Cinematic UI"],
-    href: "#synq-story",
+    caseStudyHref: "#synq-story",
     className: "bento-feature",
   },
   {
@@ -148,7 +153,7 @@ const railPanels: RailPanel[] = [
     description:
       "A messaging concept where privacy, modern auth, and cinematic pacing come together in one flagship product story.",
     tags: ["Messaging", "Security", "Product Design"],
-    href: "https://synq-chat.vercel.app/",
+    liveHref: "https://synq-chat.vercel.app/",
     desktopSrc: "/projects/synq-desktop.png",
     desktopAlt: "Synq desktop messaging workspace preview.",
     mobileSrc: "/projects/synq-mobile.jpeg",
@@ -159,7 +164,7 @@ const railPanels: RailPanel[] = [
     description:
       "A planner dashboard that favors mental clarity, strong information hierarchy, and a calm daily workflow.",
     tags: ["Dashboard", "Planning", "Systems"],
-    href: "https://life-planner-main.vercel.app/",
+    liveHref: "https://life-planner-main.vercel.app/",
     desktopSrc: "/projects/life-planner-desktop.png",
     desktopAlt: "Life Planner desktop dashboard preview.",
     mobileSrc: "/projects/life-planner-mobile.jpeg",
@@ -170,21 +175,18 @@ const railPanels: RailPanel[] = [
     description:
       "Typography, spacing, motion, and reusable surface rules built to make interfaces feel coherent at every layer.",
     tags: ["UI Systems", "Tokens", "Visual Language"],
-    href: "#stack",
   },
   {
     title: "Creative Experiments",
     description:
       "Trailer-like concepts, interactive transitions, and interface studies that push presentation beyond the generic web.",
     tags: ["Motion", "Interaction", "Concepts"],
-    href: "#projects",
   },
   {
     title: "Future Builds",
     description:
       "AI-native tools, startup-grade apps, and privacy-first experiences that are still in sketch mode but moving quickly.",
     tags: ["AI Workflow", "Startup UX", "Future Ideas"],
-    href: "#contact",
   },
 ];
 
@@ -415,8 +417,8 @@ export function PortfolioPage() {
                   ))}
                 </div>
               ) : null}
-              {card.href ? (
-                <Link className="card-link" href={card.href} {...getLinkProps(card.href)}>
+              {card.caseStudyHref ? (
+                <Link className="card-link" href={card.caseStudyHref}>
                   View case study
                 </Link>
               ) : null}
@@ -582,9 +584,11 @@ export function PortfolioPage() {
                         <span key={tag}>{tag}</span>
                       ))}
                     </div>
-                    <Link className="card-link" href={panel.href} {...getLinkProps(panel.href)}>
-                      Explore project
-                    </Link>
+                    {panel.liveHref ? (
+                      <a className="card-link" href={panel.liveHref} {...externalLinkProps}>
+                        Explore project
+                      </a>
+                    ) : null}
                   </div>
                 </article>
               ))}
@@ -664,17 +668,16 @@ export function PortfolioPage() {
             startup-ready web builds.
           </p>
           <div className="hero-actions">
-            <Link className="button-primary" href="mailto:numaanbinhusain@gmail.com">
+            <a className="button-primary" href={contactMeHref}>
               Contact Me
-            </Link>
-            <Link
+            </a>
+            <a
               className="button-secondary"
               href="https://github.com/iamkorvynn"
-              target="_blank"
-              rel="noreferrer"
+              {...externalLinkProps}
             >
               View GitHub
-            </Link>
+            </a>
           </div>
           <p className="cta-note">
             Open to internships, collaborations, and product work.
@@ -688,17 +691,16 @@ export function PortfolioPage() {
           <p>Product-minded frontend builder for privacy-first digital experiences.</p>
         </div>
         <div className="footer-links">
-          <Link href="https://github.com/iamkorvynn" target="_blank" rel="noreferrer">
+          <a href="https://github.com/iamkorvynn" {...externalLinkProps}>
             GitHub
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://www.linkedin.com/in/numaan-bin-husain/"
-            target="_blank"
-            rel="noreferrer"
+            {...externalLinkProps}
           >
             LinkedIn
-          </Link>
-          <Link href="mailto:numaanbinhusain@gmail.com">Email</Link>
+          </a>
+          <a href={contactEmailHref}>Email</a>
         </div>
         <span className="footer-signature">
           Built with intent, motion, and late-night obsession.
