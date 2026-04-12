@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Lenis from "lenis";
@@ -21,6 +22,17 @@ type ProjectCard = {
   tags?: string[];
   href?: string;
   className: string;
+};
+
+type RailPanel = {
+  title: string;
+  description: string;
+  tags: string[];
+  href: string;
+  desktopSrc?: string;
+  desktopAlt?: string;
+  mobileSrc?: string;
+  mobileAlt?: string;
 };
 
 const navLinks = [
@@ -127,13 +139,17 @@ const features: Feature[] = [
   },
 ];
 
-const railPanels = [
+const railPanels: RailPanel[] = [
   {
     title: "Synq",
     description:
       "A messaging concept where privacy, modern auth, and cinematic pacing come together in one flagship product story.",
     tags: ["Messaging", "Security", "Product Design"],
     href: "#synq-story",
+    desktopSrc: "/projects/synq-desktop.png",
+    desktopAlt: "Synq desktop messaging workspace preview.",
+    mobileSrc: "/projects/synq-mobile.jpeg",
+    mobileAlt: "Synq mobile messaging experience preview.",
   },
   {
     title: "Life Planner",
@@ -141,6 +157,10 @@ const railPanels = [
       "A planner dashboard that favors mental clarity, strong information hierarchy, and a calm daily workflow.",
     tags: ["Dashboard", "Planning", "Systems"],
     href: "#projects",
+    desktopSrc: "/projects/life-planner-desktop.png",
+    desktopAlt: "Life Planner desktop dashboard preview.",
+    mobileSrc: "/projects/life-planner-mobile.jpeg",
+    mobileAlt: "Life Planner mobile dashboard preview.",
   },
   {
     title: "Design Systems",
@@ -514,10 +534,41 @@ export function PortfolioPage() {
               {railPanels.map((panel, index) => (
                 <article key={panel.title} className="rail-panel">
                   <div className="rail-preview">
-                    <div className="rail-preview-card rail-preview-card-main">
-                      <span className="rail-preview-label">Preview 0{index + 1}</span>
+                    <div
+                      className={`rail-preview-card rail-preview-card-main${
+                        panel.desktopSrc ? " rail-preview-card-has-image" : ""
+                      }`}
+                    >
+                      {panel.desktopSrc ? (
+                        <>
+                          <Image
+                            src={panel.desktopSrc}
+                            alt={panel.desktopAlt ?? `${panel.title} desktop preview`}
+                            fill
+                            className="rail-preview-image rail-preview-image-desktop"
+                            sizes="(max-width: 1024px) 82vw, 46vw"
+                          />
+                          <div className="rail-preview-image-sheen" aria-hidden="true" />
+                        </>
+                      ) : (
+                        <span className="rail-preview-label">Preview 0{index + 1}</span>
+                      )}
                     </div>
-                    <div className="rail-preview-card rail-preview-card-side" />
+                    <div
+                      className={`rail-preview-card rail-preview-card-side${
+                        panel.mobileSrc ? " rail-preview-card-has-image" : ""
+                      }`}
+                    >
+                      {panel.mobileSrc ? (
+                        <Image
+                          src={panel.mobileSrc}
+                          alt={panel.mobileAlt ?? `${panel.title} mobile preview`}
+                          fill
+                          className="rail-preview-image rail-preview-image-mobile"
+                          sizes="180px"
+                        />
+                      ) : null}
+                    </div>
                   </div>
                   <div className="rail-copy">
                     <span className="card-eyebrow">{panel.title}</span>
