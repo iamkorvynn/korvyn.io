@@ -309,7 +309,7 @@ export function PortfolioPage() {
     <main className="page-shell">
       <div className="site-noise" aria-hidden="true" />
       <header className={`site-nav ${isScrolled ? "site-nav-scrolled" : ""}`}>
-        <div className="nav-brand">Korvynn</div>
+        <div className="nav-brand">Numaan Bin Husain</div>
         <nav className="nav-links" aria-label="Primary">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
@@ -687,7 +687,7 @@ export function PortfolioPage() {
 
       <footer className="section-frame site-footer">
         <div>
-          <strong>Korvynn</strong>
+          <strong>Numaan Bin Husain</strong>
           <p>Product-minded frontend builder for privacy-first digital experiences.</p>
         </div>
         <div className="footer-links">
